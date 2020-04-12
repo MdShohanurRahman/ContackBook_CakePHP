@@ -64,23 +64,18 @@ class ContactsController extends AppController
             // upload image
             if (!$contact->getErrors) {
             
-            if ($image) {
-                // first change name
-                $parts = explode(" ", $contact->title);
-                $name = $parts[0].$image->getClientFilename();
-            }
+           $name = $image->getClientFilename();
 
             if (!is_dir(WWW_ROOT.'img'.DS.'contact-img')) {
                 mkdir(WWW_ROOT.'img'.DS.'contact-img',0075);
             }
 
             $targetPath = WWW_ROOT.'img'.DS.'contact-img'.DS.$name;
-
             if ($name) {
-                // then move 
                 $image->moveTo($targetPath);
-                $contact->image = 'contact-img/'.$name;
+                $user->image = 'contact-img/'.$name;
             }
+
         }
 
 

@@ -63,10 +63,15 @@
         <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'mt-2 btn btn-danger btn-sm']) ?> 
             <?= $this->Form->end() ?>
             <br>
+            
+
   </div>
 </div>  
 
 </div>
+            <br>
+            <br>
+            <br>
 
 
 
