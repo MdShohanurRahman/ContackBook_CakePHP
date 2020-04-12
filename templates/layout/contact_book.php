@@ -61,7 +61,7 @@ $cakeDescription = 'Index';
             </div>
             <?php endif; ?>
         </div>
-<div class="footer bg-dark navbar-dark">
+<div class="footer bg-dark navbar-dark mt-5">
   <p>@copyright 2020</p>
 </div>
     </div>
