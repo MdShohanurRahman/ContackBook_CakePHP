@@ -55,6 +55,8 @@
     </div>
 </div>
 
+
+<?php if (!empty($user->contacts)) : ?>
 <div class="card mt-3">
     <div class="card-header h4">
         <?= __('Related Contacts') ?>
@@ -63,7 +65,6 @@
     <div class="card-body related-contact">
         <div class="related">
                 
-                <?php if (!empty($user->contacts)) : ?>
                 <div class="table-responsive">
                     <table class="table table-hover">
                       <thead class="table-dark">
