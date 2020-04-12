@@ -1,10 +1,5 @@
 # Online Contact Book
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%207-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
-
-
 ## Project Features
 1. Users Registration
 2. Users Authentication
@@ -29,7 +24,7 @@
 
 > Clone the repository
 ```bash
-git clone 
+git clone https://github.com/MdShohanurRahman/ContackBook_CakePHP.git
 ```
 
 > create a mysql database named `cake_contactbook`
