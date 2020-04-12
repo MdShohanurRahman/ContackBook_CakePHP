@@ -29,7 +29,7 @@
 
 > Clone the repository
 ```bash
-git clone 
+git clone https://github.com/MdShohanurRahman/ContackBook_CakePHP.git
 ```
 
 > create a mysql database named `cake_contactbook`
