@@ -55,9 +55,12 @@ class ContactsController extends AppController
     public function add()
     {
         $contact = $this->Contacts->newEmptyEntity();
+
+
         if ($this->request->is('post')) {
             $contact = $this->Contacts->patchEntity($contact, $this->request->getData());
             $contact->user_id = $this->Auth->user('id');
+
 
             // get image
             $image = $this->request->getData('image_file');
@@ -73,7 +76,7 @@ class ContactsController extends AppController
             $targetPath = WWW_ROOT.'img'.DS.'contact-img'.DS.$name;
             if ($name) {
                 $image->moveTo($targetPath);
-                $user->image = 'contact-img/'.$name;
+                $contact->image = 'contact-img/'.$name;
             }
 
         }
@@ -113,7 +116,8 @@ class ContactsController extends AppController
             // upload image
             if (!$contact->getErrors) {
             
-            $name = $image->getClientFilename();
+            $title = join("-",$contact->title);
+            $name =$image->getClientFilename();
 
             if ($name) {
                 if (!is_dir(WWW_ROOT.'img'.DS.'contact-img')) {

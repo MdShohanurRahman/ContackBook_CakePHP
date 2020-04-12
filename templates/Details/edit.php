@@ -16,7 +16,7 @@
 
 </style>
 
-<div class="">
+<div class="mb-5">
 
 <div class="card">
     <div class="card-header">
@@ -36,11 +36,9 @@
                     echo $this->Form->control('address', ['class'=>'form-control']);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary my-2']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
 </div>
-
-
 </div>

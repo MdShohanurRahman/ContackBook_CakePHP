@@ -17,15 +17,15 @@ class DetailsController extends AppController
         parent::initialize();
         $this->Auth->allow(['logout', 'add','edit','delete','view','index']);
     }
-    // public function index()
-    // {
-    //     $this->paginate = [
-    //         'contain' => ['Contacts'],
-    //     ];
-    //     $details = $this->paginate($this->Details);
+    public function index()
+    {
+        $this->paginate = [
+            'contain' => ['Contacts'],
+        ];
+        $details = $this->paginate($this->Details);
 
-    //     $this->set(compact('details'));
-    // }
+        $this->set(compact('details'));
+    }
 
     /**
      * View method
@@ -109,6 +109,7 @@ class DetailsController extends AppController
             $this->Flash->error(__('The detail could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=>'Contacts','action' => 'view',$detail->contact_id]);
+        
     }
 }
