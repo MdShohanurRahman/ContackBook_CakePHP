@@ -14,7 +14,20 @@ class UsersController extends AppController
 {
     public function initialize(): void{
         parent::initialize();
-            $this->Auth->allow(['logout','login', 'add','edit','delete','view','index','dashboard']);
+        if ($this->Auth->user()) {
+            if ($this->Auth->user('status') == 1) {
+                $this->Auth->allow(['logout','login', 'add','edit','delete','view','index','dashboard']);
+                
+            }else{
+            $this->Auth->allow(['logout','login', 'add','edit','dashboard']);
+
+            }
+            
+        }
+        else{
+            $this->Auth->allow(['logout','login', 'add',]);
+
+        }
     }
 
     
@@ -24,8 +37,8 @@ class UsersController extends AppController
 
             if($user){
                 $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
                 $this->Flash->success(__('Successfully logged in'));
+                return $this->redirect($this->Auth->redirectUrl());
                 // return $this->redirect(['action'=>'dashboard']);
              
             }

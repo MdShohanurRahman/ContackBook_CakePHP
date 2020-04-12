@@ -17,7 +17,9 @@ class ContactBookController extends AppController
 
     public function index()
     {
-        
+        // $user= $this->Auth->user('status');
+        // debug($user);
+        // exit;
     }
 
        public function isAuthorized($user)
