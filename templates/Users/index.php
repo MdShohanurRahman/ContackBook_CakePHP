@@ -4,7 +4,7 @@
     List Of All Users
     <div class="btn-group float-right" role="group" aria-label="Basic example">
     <form class="mr-3"  action="" method="get">
-    <input type="text" name="key" class="form-control" placeholder="Search here...">
+    <input type="text" name="key" value="<?= $this->request->getQuery('key')?>" class="form-control" placeholder="Search here...">
     </form>
     <?= $this->Html->link(__('Reload'), ['action' => 'index'], ['class' => 'btn btn-secondary btn-sm']) ?>
 
@@ -20,7 +20,6 @@
         <th><?= $this->Paginator->sort('firstName') ?></th>
         <th><?= $this->Paginator->sort('lastName') ?></th>
         <th><?= $this->Paginator->sort('email') ?></th>
-        
         <th><?= $this->Paginator->sort('created') ?></th>
         <th><?= $this->Paginator->sort('modified') ?></th>
         <th class="actions"><?= __('Actions') ?></th>

@@ -24,11 +24,11 @@ class ContactsController extends AppController
 
         }else {
             $query = $this->Contacts;
-            $key = '';
+            
         }
         $contacts = $this->paginate($query);
 
-        $this->set(compact('contacts','key'));
+        $this->set(compact('contacts'));
     }
 
     /**
@@ -73,15 +73,14 @@ class ContactsController extends AppController
                 mkdir(WWW_ROOT.'img'.DS.'contact-img',0075);
             }
 
-            $targetPath = WWW_ROOT.'img'.DS.'contact-img'.DS.$name;
             if ($name) {
+                $newName = round(microtime(true)).$name;
+                $targetPath = WWW_ROOT.'img'.DS.'contact-img'.DS.$newName;
                 $image->moveTo($targetPath);
-                $contact->image = 'contact-img/'.$name;
+                $contact->image = 'contact-img/'.$newName;
             }
 
         }
-
-
             if ($this->Contacts->save($contact)) {
                 $this->Flash->success(__('The contact has been saved.'));
 
@@ -116,7 +115,6 @@ class ContactsController extends AppController
             // upload image
             if (!$contact->getErrors) {
             
-            $title = join("-",$contact->title);
             $name =$image->getClientFilename();
 
             if ($name) {
@@ -124,15 +122,19 @@ class ContactsController extends AppController
                     mkdir(WWW_ROOT.'img'.DS.'contact-img',0075);
                 }
 
-                $targetPath = WWW_ROOT.'img'.DS.'contact-img'.DS.$name;
-                $image->moveTo($targetPath);
-
                 // if exit then delete it
-                $imagepath = WWW_ROOT.'img'.DS.$contact->image;
-                if(file_exists($imagepath)){
-                    unlink($imagepath);
+                if ($contact->image) {
+                    $imagepath = WWW_ROOT.'img'.DS.$contact->image;
+                        if(file_exists($imagepath)){
+                            unlink($imagepath);
+                        }
                 }
-                $contact->image = 'contact-img/'.$name;
+
+                // rename before upload
+                $newName = round(microtime(true)).$name;
+                $targetPath = WWW_ROOT.'img'.DS.'contact-img'.DS.$newName;
+                $image->moveTo($targetPath);
+                $contact->image = 'contact-img/'.$newName;
 
             }
         }

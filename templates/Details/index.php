@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Detail[]|\Cake\Collection\CollectionInterface $details
@@ -65,4 +65,4 @@
 </div>
 </div>
 
-
+ -->
