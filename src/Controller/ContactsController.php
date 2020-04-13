@@ -110,7 +110,7 @@ class ContactsController extends AppController
         
             $contact->user_id = $this->Auth->user('id');
 
-                        // get image
+            // get image
             $image = $this->request->getData('change_image');
             // upload image
             if (!$contact->getErrors) {
