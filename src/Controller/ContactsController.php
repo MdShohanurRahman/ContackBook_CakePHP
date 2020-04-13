@@ -89,7 +89,9 @@ class ContactsController extends AppController
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
         $users = $this->Contacts->Users->find('list', ['limit' => 200]);
-        $groups = $this->Contacts->Groups->find('list', ['limit' => 200]);
+        $groups = $this->Contacts->Groups->find('list')
+                         ->where(['user_id' => $this->Auth->user('id') ]);
+
         $this->set(compact('contact', 'users', 'groups'));
     }
 
@@ -147,7 +149,8 @@ class ContactsController extends AppController
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
         $users = $this->Contacts->Users->find('list', ['limit' => 200]);
-        $groups = $this->Contacts->Groups->find('list', ['limit' => 200]);
+        $groups = $this->Contacts->Groups->find('list')
+                         ->where(['user_id' => $this->Auth->user('id') ]);
         $details = $this->Contacts->Details->find('list', ['limit' => 200]);
 
         $this->set(compact('contact', 'users', 'groups','details'));
